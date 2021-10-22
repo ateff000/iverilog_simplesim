@@ -1,20 +1,24 @@
-from sys import platform
 import os
+from sys import platform
 
+if platform == 'linux':
+	iverilog = 'iverilog'
+	vvp = 'vvp'
+	gtkwave = 'gtkwave'
 
-icarus = r'd:\Other\iverilog\bin\iverilog.exe'
-vvp = r'd:\Other\iverilog\bin\vvp.exe'
-gtkwave = r'd:\Other\iverilog\gtkwave\bin\gtkwave.exe'
+elif platform == "win32":	
+	iverilog = r'd:\Other\iverilog\bin\iverilog.exe'
+	vvp = r'd:\Other\iverilog\bin\vvp.exe'
+	gtkwave = r'd:\Other\iverilog\gtkwave\bin\gtkwave.exe'
 
 
 testbench = 'Test00.v'
 tested = 'SPI_SLAVE_8x.v'
 
-
 output = 'qqq'
 
 
-cmd_compil = f'{icarus} -o {output} {tested} {testbench}'
+cmd_compil = f'{iverilog} -o {output} {tested} {testbench}'
 cmd_sim = f'{vvp} {output}'
 
 
